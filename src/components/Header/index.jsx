@@ -1,32 +1,45 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/4fk.jpg";
 import "./Header.scss";
-import logo from "../../logo.svg";
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    console.log(props.message);
-    this.state = {
-      user: "castri",
-    };
-  }
-
-  render() {
-    return (
-      <header className="header">
-        <div className="header__logo logo">
-          <img src={logo} alt="logo" className="logo__img" />
-        </div>
-        <nav className="header__navbar navbar">
-          <ul className="navbar__options options">
-            <li className="options__info"> Trabaja con nojostros</li>
-            <li className="options__info"> Nuestros productos</li>
-            <li className="options__info"> Productos</li>
-          </ul>
-        </nav>
-      </header>
-    );
-  }
+function Header() {
+  return (
+    <header className="header">
+      <div className="header__logo logo">
+        <img src={logo} alt="logo" className="logo__img" />
+      </div>
+      <nav className="header__navbar navbar">
+        <ul className="navbar__options options">
+          <li className="options__info info">
+            <Link className="info__link" to="/">
+              Home
+            </Link>
+          </li>
+          <li className="options__info info">
+            <Link className="info__link" to="/products">
+              Productos
+            </Link>
+          </li>
+          <li className="options__info info">
+            <Link className="info__link" to="/stores">
+              Tiendas
+            </Link>
+          </li>
+          <li className="options__info info">
+            <Link className="info__link" to="/sign-in">
+              Iniciar Sesion
+            </Link>
+          </li>
+          <li className="options__info info">
+            <Link className="info__link" to="/sign-up">
+              Registrate
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
 }
 
 export default Header;
