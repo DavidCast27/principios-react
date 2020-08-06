@@ -1,0 +1,14 @@
+[
+    {
+        "label": "Nombre de Usuario",
+        "type": "text",
+        "placeholder": "Ingresa su nombre de usuario",
+        "name": "username"
+    },
+    {
+        "label": "Contraseña",
+        "type": "password",
+        "placeholder": "Ingresa su contraseña",
+        "name": "password"
+    }
+]
