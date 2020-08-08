@@ -26,7 +26,15 @@ class SignUp extends Component {
     e.preventDefault();
     const self = this || {};
     const state = self.state;
-    await createUser({ ...state }).then(() => this.props.history.push("/"));
+    await createUser({ ...state })
+      .then((data) => {
+        console.log(data);
+        this.props.history.push("/");
+      })
+      .catch((err) => {
+        console.log("entro al error")
+      console.log(err);
+    });
   };
 
   onReset = () => {

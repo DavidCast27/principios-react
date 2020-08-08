@@ -15,7 +15,7 @@ export const createUser = ({ username, email, password }) => {
     .then((res) => {
       const uid = res.user.uid;
       writeData(`${USERS_PATH}${uid}`, { username });
-      return res;
+      return ({email, password});
     })
 };
 

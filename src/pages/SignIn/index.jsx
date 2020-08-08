@@ -20,16 +20,19 @@ class SignIn extends Component {
     this.setState({ [name]: value });
   };
 
-  onSubmit = async (e) => {
+  onSubmit = (e) => {
     e.preventDefault();
     const self = this || {};
     const state = self.state;
-    await signIn({ ...state })
+    signIn({ ...state })
       .then((data) => {
         console.log(data);
         this.props.history.push("/");
       })
-      .catch(console.log("credenciales malas"));
+      .catch((err) => {
+          console.log("entro al error")
+        console.log(err);
+      });
   };
 
   onReset = () => {
