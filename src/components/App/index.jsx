@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import "../../common/js/firebaseDatabase";
 import Header from "../Header";
 import Home from "../../pages/Home";
 import SignUp from "../../pages/SignUp";

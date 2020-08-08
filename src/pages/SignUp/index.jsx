@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Form from "../../components/Form";
 import signUpForm from "../../common/constants/signUpForm.json";
 import "./SignUp.scss";
+import { createUser } from "../../common/js/firebaseDatabase";
 
 class SignUp extends Component {
   constructor(props) {
@@ -21,9 +22,11 @@ class SignUp extends Component {
     this.setState({ [name]: value });
   };
 
-  onSubmit = (e) => {
+  onSubmit = async (e) => {
     e.preventDefault();
-    console.log(this.state);
+    const self = this || {};
+    const state = self.state;
+    await createUser({ ...state }).then(() => this.props.history.push("/"));
   };
 
   onReset = () => {

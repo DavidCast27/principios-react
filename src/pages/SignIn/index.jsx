@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import Form from "../../components/Form";
 import signInForm from "../../common/constants/signInForm.json";
 import "./SignIn.scss";
+import { signIn } from "../../common/js/firebaseDatabase";
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      email: "",
       password: "",
     };
   }
@@ -19,16 +20,23 @@ class SignIn extends Component {
     this.setState({ [name]: value });
   };
 
-  onSubmit = (e) => {
+  onSubmit = async (e) => {
     e.preventDefault();
-    console.log(this.state)
+    const self = this || {};
+    const state = self.state;
+    await signIn({ ...state })
+      .then((data) => {
+        console.log(data);
+        this.props.history.push("/");
+      })
+      .catch(console.log("credenciales malas"));
   };
 
   onReset = () => {
     this.setState({
-        username: "",
-        password: "",
-      });
+      email: "",
+      password: "",
+    });
   };
 
   render() {

@@ -1,9 +1,9 @@
 [
     {
-        "label": "Nombre de Usuario",
-        "type": "text",
-        "placeholder": "Ingresa su nombre de usuario",
-        "name": "username"
+        "label": "Correo Electrónico",
+        "type": "email",
+        "placeholder": "Ingrese su correo",
+        "name": "email"
     },
     {
         "label": "Contraseña",
