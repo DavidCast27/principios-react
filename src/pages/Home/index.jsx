@@ -5,7 +5,7 @@ import "./Home.scss"
 
 function Home() {
   return (
-    <div className="home">
+    <div className="homePage">
       <Card
         title="Bienvenido"
         picture={afkgiff}

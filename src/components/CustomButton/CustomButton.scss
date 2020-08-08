@@ -1,0 +1,46 @@
+@import "../../common/scss/colors";
+
+.customButton {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 12px;
+  border: 1px solid $soft-violet-14;
+  font-size: 16px;
+  font-weight: bold;
+  height: 40px;
+  width: 140px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &--submit {
+    background-color: $soft-violet-14;
+    color: $white;
+
+    &:hover {
+      color: $soft-grey-4;
+    }
+
+    &:active {
+      color: $soft-grey-8;
+    }
+  }
+
+  &--reset {
+    background-color: $white;
+    color: $soft-violet-14;
+
+    &:hover {
+      border: 1px solid $soft-violet-16;
+      color: $soft-violet-16;
+    }
+
+    &:active {
+      border: 1px solid $black;
+      color: $black;
+    }
+  }
+}
+

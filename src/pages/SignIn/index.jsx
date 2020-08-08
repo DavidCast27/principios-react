@@ -33,7 +33,7 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div className="signIn">
+      <div className="signInPage">
         <Form
           fields={signInForm}
           onChange={this.onChange}

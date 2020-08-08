@@ -9,6 +9,8 @@ class SignUp extends Component {
     this.state = {
       username: "",
       password: "",
+      email: "",
+      passwordConfirmation: "",
     };
   }
 
@@ -21,19 +23,21 @@ class SignUp extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state)
+    console.log(this.state);
   };
 
   onReset = () => {
     this.setState({
-        username: "",
-        password: "",
-      });
+      username: "",
+      password: "",
+      email: "",
+      passwordConfirmation: "",
+    });
   };
 
   render() {
     return (
-      <div className="signIn">
+      <div className="signInPage">
         <Form
           fields={signUpForm}
           onChange={this.onChange}

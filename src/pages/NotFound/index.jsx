@@ -2,7 +2,7 @@ import React from 'react'
 
 function NotFoud() {
     return (
-        <div>
+        <div className="notFoundPage">
             Not Foud      
         </div>
     );
