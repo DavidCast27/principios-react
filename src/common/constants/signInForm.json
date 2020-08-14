@@ -3,12 +3,16 @@
         "label": "Correo Electrónico",
         "type": "email",
         "placeholder": "Ingrese su correo",
-        "name": "email"
+        "name": "email",
+        "isValid": false,
+        "messageError": ""
     },
     {
         "label": "Contraseña",
         "type": "password",
         "placeholder": "Ingresa su contraseña",
-        "name": "password"
+        "name": "password",
+        "isValid": false,
+        "messageError": ""
     }
 ]

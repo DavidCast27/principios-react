@@ -1,0 +1,7 @@
+{
+    "minLength": "Debe tener minimo %s letras",
+    "maxLength": "Debe tener maximo %s letras",
+    "required": "Este campo es requerido",
+    "passwordConfirm": "Las contraseñas deben ser iguales",
+    "email": "Debe ser un correo electronico"
+}

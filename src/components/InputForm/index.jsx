@@ -9,11 +9,27 @@ function InputForm(props) {
   const name = (props && props.name) || "";
   const value = (props && props.value) || "";
 
+  const isValid = props && props.isValid;
+  const messageError = (props && props.messageError) || "";
+
+  console.log(isValid, messageError);
   if (label && type && placeholder && onChange) {
     return (
       <label className="inputForm">
         <span className="inputForm__label">{label}</span>
-        <input className="inputForm__input" type={type} name={name} value={value} placeholder={placeholder} onChange={onChange} />
+        <input
+          className={`inputForm__input ${
+            !isValid && messageError ? "inputForm__input--error" : ""
+          }`}
+          type={type}
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+        />
+        {!isValid && messageError && (
+            <span className="inputForm__messageError"> {messageError}</span>
+          )}
       </label>
     );
   }

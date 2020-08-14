@@ -11,6 +11,19 @@ class SignIn extends Component {
       email: "",
       password: "",
     };
+
+    // this.state = {
+    //   email: {
+    //     isValid: false,
+    //     messageError: "",
+    //     value: "",
+    //   },
+    //   password: {
+    //     isValid: false,
+    //     messageError: "",
+    //     value: "",
+    //   },
+    // };
   }
 
   onChange = (e) => {
@@ -30,7 +43,7 @@ class SignIn extends Component {
         this.props.history.push("/");
       })
       .catch((err) => {
-          console.log("entro al error")
+        console.log("entro al error");
         console.log(err);
       });
   };
