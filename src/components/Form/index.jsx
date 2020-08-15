@@ -1,8 +1,10 @@
 import React from "react";
 import _map from "lodash/map";
+import _get from "lodash/get";
 import InputForm from "../InputForm";
 import CustomButton from "../CustomButton";
 import "./Form.scss";
+import { values } from "lodash";
 
 function Form(props) {
   const title = (props && props.title) || "";
@@ -12,7 +14,6 @@ function Form(props) {
   const fields = (props && props.fields) || [];
   const onChange = (props && props.onChange) || null;
   const onReset = (props && props.onReset) || null;
-  const state = (props && props.state) || {};
 
   return (
     <div className="form">
@@ -25,11 +26,16 @@ function Form(props) {
       >
         {_map(fields, (field, key) => {
           const name = (field && field.name) || "";
+          const value = _get(props, `state.${name}.value`);
+          const isValid = _get(props, `state.${name}.isValid`);
+          const messageError = _get(props, `state.${name}.messageError`);
           return (
             <InputForm
               key={key}
               {...field}
-              value={state[name]}
+              value={value}
+              isValid={isValid}
+              messageError={messageError}
               onChange={onChange}
             />
           );

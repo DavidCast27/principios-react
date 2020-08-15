@@ -8,7 +8,7 @@ function CustomButton(props) {
   
   if (type && text) {
     return (
-      <button className={`customButton customButton--${type}`} type={type} onClick={onClick}>
+      <button className={`customButton customButton--${type}`} type={type} onClick={onClick} >
         {text}
       </button>
     );

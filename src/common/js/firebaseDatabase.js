@@ -19,7 +19,7 @@ export const createUser = ({ username, email, password }) => {
     })
 };
 
-export const signIn = ({ email, password }) => {
+export const signIn = ( email, password ) => {
   return auth
     .signInWithEmailAndPassword(email, password)
     .then((res) => {

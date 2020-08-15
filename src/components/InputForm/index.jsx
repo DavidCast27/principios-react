@@ -8,23 +8,27 @@ function InputForm(props) {
   const onChange = (props && props.onChange) || null;
   const name = (props && props.name) || "";
   const value = (props && props.value) || "";
+  const minLength = (props && props.minLength) || "";
+  const maxLength = (props && props.maxLength) || "";
+  const required = (props && props.required) || false;
+
 
   const isValid = props && props.isValid;
   const messageError = (props && props.messageError) || "";
 
-  console.log(isValid, messageError);
   if (label && type && placeholder && onChange) {
     return (
       <label className="inputForm">
         <span className="inputForm__label">{label}</span>
         <input
-          className={`inputForm__input ${
-            !isValid && messageError ? "inputForm__input--error" : ""
-          }`}
+          className={"inputForm__input"}
           type={type}
           name={name}
           value={value}
           placeholder={placeholder}
+          minLength={minLength}
+          maxLength={maxLength}
+          required={required}
           onChange={onChange}
         />
         {!isValid && messageError && (

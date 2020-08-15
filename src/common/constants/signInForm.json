@@ -4,15 +4,18 @@
         "type": "email",
         "placeholder": "Ingrese su correo",
         "name": "email",
-        "isValid": false,
-        "messageError": ""
+        "maxLength": 50,
+        "required": true
+        
     },
     {
         "label": "Contraseña",
         "type": "password",
         "placeholder": "Ingresa su contraseña",
         "name": "password",
-        "isValid": false,
-        "messageError": ""
+        "minLength": 6,
+        "maxLength": 30,
+        "required": true
+        
     }
 ]
