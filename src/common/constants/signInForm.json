@@ -14,7 +14,6 @@
         "placeholder": "Ingresa su contraseña",
         "name": "password",
         "minLength": 6,
-        "maxLength": 30,
         "required": true
         
     }

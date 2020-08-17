@@ -3,24 +3,34 @@
         "label": "Nombre de Usuario",
         "type": "text",
         "placeholder": "Ingresa su nombre de usuario",
-        "name": "username"
+        "name": "username",
+        "maxLength": 50,
+        "minLength": 5,
+        "required": true
+        
     },
     {
         "label": "Correo Electrónico",
         "type": "email",
         "placeholder": "Ingrese su correo",
-        "name": "email"
+        "name": "email",
+        "maxLength": 50,
+        "required": true
     },
     {
         "label": "Contraseña",
         "type": "password",
         "placeholder": "Ingresa su contraseña",
-        "name": "password"
+        "name": "password",
+        "minLength": 6,
+        "required": true
     },
     {
         "label": "Confirmar Contraseña",
         "type": "password",
         "placeholder": "Ingresa su confirmacion de contraseña",
-        "name": "passwordConfirmation"
+        "name": "passwordConfirmation",
+        "minLength": 6,
+        "required": true
     }
 ]

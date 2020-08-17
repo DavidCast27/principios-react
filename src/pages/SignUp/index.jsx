@@ -1,32 +1,33 @@
 import React, { Component } from "react";
 import Form from "../../components/Form";
+import { createUser } from "../../common/js/firebaseDatabase";
+import { DEFAULT_STATE_SIGN_UP } from "../../common/constants/formsDefaultStates";
+import { inputValidate } from "../../common/js/validator";
 import signUpForm from "../../common/constants/signUpForm.json";
 import "./SignUp.scss";
-import { createUser } from "../../common/js/firebaseDatabase";
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: "",
-      password: "",
-      email: "",
-      passwordConfirmation: "",
-    };
+    this.state = DEFAULT_STATE_SIGN_UP;
   }
 
   onChange = (e) => {
     const target = e.target;
     const name = (target && target.name) || "";
     const value = (target && target.value) || "";
-    this.setState({ [name]: value });
+    const validate = inputValidate(target);
+    this.setState({ [name]: { value, ...validate } });
   };
 
   onSubmit = async (e) => {
     e.preventDefault();
     const self = this || {};
     const state = self.state;
-    await createUser({ ...state })
+    const username = state.username.value;
+    const email = state.email.value;
+    const password = state.password.value;
+    await createUser(username,email,password)
       .then((data) => {
         console.log(data);
         this.props.history.push("/");

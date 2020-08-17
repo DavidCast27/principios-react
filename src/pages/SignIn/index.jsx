@@ -1,11 +1,10 @@
 import React, { Component } from "react";
+import { DEFAULT_STATE_SIGN_IN } from "../../common/constants/formsDefaultStates";
+import { inputValidate } from "../../common/js/validator";
+import { signIn } from "../../common/js/firebaseDatabase";
 import Form from "../../components/Form";
 import signInForm from "../../common/constants/signInForm.json";
-import { signIn } from "../../common/js/firebaseDatabase";
-import { inputValidate } from "../../common/js/validator";
-import { DEFAULT_STATE_SIGN_IN } from "../../common/js/formsDefaultStates";
 import "./SignIn.scss";
-
 
 class SignIn extends Component {
   constructor(props) {
@@ -18,8 +17,6 @@ class SignIn extends Component {
     const name = (target && target.name) || "";
     const value = (target && target.value) || "";
     const validate = inputValidate(target);
-    // const validate = this.validator(value);
-    // this.state({[name]: value})
     this.setState({ [name]: { value, ...validate } });
   };
 

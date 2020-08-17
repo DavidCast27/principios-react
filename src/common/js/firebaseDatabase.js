@@ -4,12 +4,11 @@ import "firebase/database";
 import CONFIG_FIREBASE from "../constants/firebaseConfig";
 
 firebase.initializeApp(CONFIG_FIREBASE);
-//TODO: hacer los metodos
 const auth = firebase.auth();
 const database = firebase.database();
 const USERS_PATH = "users/";
 
-export const createUser = ({ username, email, password }) => {
+export const createUser = ( username, email, password ) => {
   return auth
     .createUserWithEmailAndPassword(email, password)
     .then((res) => {
