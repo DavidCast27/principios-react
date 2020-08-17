@@ -16,7 +16,7 @@ class SignUp extends Component {
     const target = e.target;
     const name = (target && target.name) || "";
     const value = (target && target.value) || "";
-    const validate = inputValidate(target);
+    const validate = inputValidate(target, this.state);
     this.setState({ [name]: { value, ...validate } });
   };
 
@@ -27,15 +27,15 @@ class SignUp extends Component {
     const username = state.username.value;
     const email = state.email.value;
     const password = state.password.value;
-    await createUser(username,email,password)
+    await createUser(username, email, password)
       .then((data) => {
         console.log(data);
         this.props.history.push("/");
       })
       .catch((err) => {
-        console.log("entro al error")
-      console.log(err);
-    });
+        console.log("entro al error");
+        console.log(err);
+      });
   };
 
   onReset = () => {

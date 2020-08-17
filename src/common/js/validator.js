@@ -1,53 +1,36 @@
 import messagesError from "../constants/messagesRules.json";
 
-export const inputValidate = (target) => {
-  let validate = {};
+export const inputValidate = (input, state) => {
+  const validityState = input.validity;
+  let messageError = "";
 
-  if (target.required) {
-    validate = isRequired(target);
-    if (!validate.isValid) {
-      return validate;
+  if (validityState.valueMissing) {
+    messageError = messagesError.required;
+  } else if (validityState.tooShort) {
+    const minLength = input.minLength;
+    messageError = messagesError.minLength.replace("%s", minLength);
+  } else if (validityState.typeMismatch) {
+    messageError = messagesError.email;
+  } else if (input.name === "passwordConfirmation") {
+    const password = state.password.value;
+    const confirmPasword = input.value;
+    if (password !== confirmPasword) {
+      messageError = messagesError.passwordConfirm;
+      input.setCustomValidity(messageError);
+    } else {
+      input.setCustomValidity("");
     }
   }
-
-  if (target.minLength) {
-    validate = isMinLength(target);
-    if (!validate.isValid) {
-      return validate;
-    }
-  }
-
-  if (target.type === "email") {
-    validate = isEmail(target);
-    if (!validate.isValid) {
-      return validate;
-    }
-  }
+  return { messageError };
 };
 
-const isRequired = (target) => {
-  if (!target.value) {
-    return { isValid: false, messageError: messagesError.required };
+//TODO: implementar esta funcion en el metodo onInput del input
+// como capturar los parametros de entrada, ya que son inputs diferentes
+const validatePasswords = (password1, password2, input) => {
+  const messageError = messagesError.passwordConfirm;
+  if (password1 === password2) {
+    input.setCustomValidity("");
+  } else {
+    input.setCustomValidity(messageError);
   }
-  return { isValid: true };
-};
-
-const isMinLength = (target) => {
-  const textlength = target.value.length;
-  const minLength = target.minLength;
-  if (textlength < minLength) {
-    const text = messagesError.minLength.replace("%s", minLength);
-    return { isValid: false, messageError: text };
-  }
-  return { isValid: true };
-};
-
-const isEmail = (target) => {
-  const pattern = /^[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+$/;
-  const text = target.value;
-  if (!pattern.test(text)) {
-    const text = messagesError.email;
-    return { isValid: false, messageError: text };
-  }
-  return { isValid: true };
 };

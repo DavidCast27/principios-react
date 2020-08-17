@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./InputForm.scss";
+import { inputValidate } from "../../common/js/validator";
 
 function InputForm(props) {
   const label = (props && props.label) || "";
@@ -11,11 +12,7 @@ function InputForm(props) {
   const minLength = (props && props.minLength) || "";
   const maxLength = (props && props.maxLength) || "";
   const required = (props && props.required) || false;
-
-
-  const isValid = props && props.isValid;
   const messageError = (props && props.messageError) || "";
-
   if (label && type && placeholder && onChange) {
     return (
       <label className="inputForm">
@@ -31,9 +28,9 @@ function InputForm(props) {
           required={required}
           onChange={onChange}
         />
-        {!isValid && messageError && (
-            <span className="inputForm__messageError"> {messageError}</span>
-          )}
+        {messageError && (
+          <span className="inputForm__messageError"> {messageError}</span>
+        )}
       </label>
     );
   }

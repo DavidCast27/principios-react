@@ -1,5 +1,4 @@
 const basicProperties = {
-  isValid: false,
   messageError: "",
   value: "",
 };
@@ -11,6 +10,6 @@ export const DEFAULT_STATE_SIGN_IN = {
 
 export const DEFAULT_STATE_SIGN_UP = {
   ...DEFAULT_STATE_SIGN_IN,
-  confirmPassword: { ...basicProperties },
   username: { ...basicProperties },
+  passwordConfirmation : { ...basicProperties },
 };
